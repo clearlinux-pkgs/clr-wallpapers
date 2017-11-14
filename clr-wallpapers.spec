@@ -4,7 +4,7 @@
 #
 Name     : clr-wallpapers
 Version  : 4
-Release  : 11
+Release  : 12
 URL      : http://localhost/cgit/projects/clr-wallpapers/snapshot/clr-wallpapers-4.tar.bz2
 Source0  : http://localhost/cgit/projects/clr-wallpapers/snapshot/clr-wallpapers-4.tar.bz2
 Summary  : No detailed summary available
