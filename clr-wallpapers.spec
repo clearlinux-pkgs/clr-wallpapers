@@ -4,7 +4,7 @@
 #
 Name     : clr-wallpapers
 Version  : 8
-Release  : 19
+Release  : 20
 URL      : https://github.com/clearlinux/clr-wallpapers/archive/v8.tar.gz
 Source0  : https://github.com/clearlinux/clr-wallpapers/archive/v8.tar.gz
 Summary  : No detailed summary available
@@ -25,26 +25,31 @@ data components for the clr-wallpapers package.
 
 %prep
 %setup -q -n clr-wallpapers-8
+cd %{_builddir}/clr-wallpapers-8
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1556665079
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1604092333
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %autogen --disable-static
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1556665079
+export SOURCE_DATE_EPOCH=1604092333
 rm -rf %{buildroot}
 %make_install
 
